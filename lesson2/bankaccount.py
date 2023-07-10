@@ -12,7 +12,21 @@
 
 
 class BankAccount:
-    pass
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        self.__balance -= amount
+
+    def close(self):
+        self.__balance = 0
+
+    @property
+    def balance(self):
+        return self.__balance
 
 
 account = BankAccount(1000)

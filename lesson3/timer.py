@@ -1,3 +1,5 @@
+import datetime
+
 """
 Напишите класс Timer, который будет вычислять время выполнения блока кода. Класс должен иметь следующие методы:
 
@@ -8,10 +10,14 @@
 
 
 class Timer:
-    pass
+    def __enter__(self):
+        self.first = datetime.datetime.now()
 
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.elapsed_time = datetime.datetime.now() - self.first
+        return self.elapsed_time
 
 with Timer() as timer:
-    # блок кода
+    pass
 
 print("Execution time:", timer.elapsed_time)
